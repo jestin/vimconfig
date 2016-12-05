@@ -83,6 +83,8 @@ Plug 'majutsushi/tagbar'
 
 Plug 'tommcdo/vim-fubitive'
 
+Plug 'vim-scripts/Gundo'
+
 call plug#end()
 
 set backspace=2 " make backspace work like most other apps"
@@ -175,6 +177,9 @@ let g:signify_vcs_list = [ 'git' ]
 
 " EditorConfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" Gundo
+nnoremap <C-g> :GundoToggle<CR>
 
 " OmniSharp configs
 filetype plugin on
