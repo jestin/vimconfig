@@ -1,6 +1,7 @@
 ### To use
 
 Clone to `~/.vim`:
+
     git clone https://github.com/jestin/vimconfig.git ~/.vim
 
 Create a symbolic link to the vimrc file:
