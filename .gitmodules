@@ -1,0 +1,12 @@
+[submodule "vim-easy-align"]
+    path = plugged/vim-easy-align
+    url = https://github.com/junegunn/vim-easy-align
+
+[submodule "vim-easymotion"]
+    path = plugged/vim-easymotion
+    url = https://github.com/Lokaltog/vim-easymotion
+
+[submodule "delimitMate"]
+    path = plugged/delimitMate
+    url = https://github.com/Raimondi/delimitMate
+
