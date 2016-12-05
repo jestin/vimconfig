@@ -102,3 +102,7 @@
     path = plugged/vim-fubitive
     url = https://github.com/tommcdo/vim-fubitive
 
+[submodule "Gundo"]
+    path = plugged/Gundo
+    url = https://github.com/vim-scripts/Gundo
+
