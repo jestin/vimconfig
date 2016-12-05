@@ -10,3 +10,95 @@
     path = plugged/delimitMate
     url = https://github.com/Raimondi/delimitMate
 
+[submodule "YouCompleteMe"]
+    path = plugged/YouCompleteMe
+    url = https://github.com/Valloric/YouCompleteMe
+
+[submodule "tern_for_vim"]
+    path = plugged/tern_for_vim
+    url = https://github.com/ternjs/tern_for_vim
+
+[submodule "vim-enmasse"]
+    path = plugged/vim-enmasse
+    url = https://github.com/Olical/vim-enmasse
+
+[submodule "ctrlp.vim"]
+    path = plugged/ctrlp.vim
+    url = https://github.com/ctrlpvim/ctrlp.vim
+
+[submodule "vim-json"]
+    path = plugged/vim-json
+    url = https://github.com/elzr/vim-json
+
+[submodule "vim-signify"]
+    path = plugged/vim-signify
+    url = https://github.com/mhinz/vim-signify
+
+[submodule "vim-javascript"]
+    path = plugged/vim-javascript
+    url = https://github.com/pangloss/vim-javascript
+
+[submodule "ag.vim"]
+    path = plugged/ag.vim
+    url = https://github.com/rking/ag.vim
+
+[submodule "syntastic"]
+    path = plugged/syntastic
+    url = https://github.com/scrooloose/syntastic
+
+[submodule "nerdtree"]
+    path = plugged/nerdtree
+    url = https://github.com/scrooloose/nerdtree
+
+[submodule "vim-angular"]
+    path = plugged/vim-angular
+    url = https://github.com/burnettk/vim-angular
+
+[submodule "html5.vim"]
+    path = plugged/html5.vim
+    url = https://github.com/othree/html5.vim
+
+[submodule "matchit"]
+    path = plugged/matchit
+    url = https://github.com/tmhedberg/matchit
+
+[submodule "vim-closetag"]
+    path = plugged/vim-closetag
+    url = https://github.com/alvan/vim-closetag
+
+[submodule "omnisharp-vim"]
+    path = plugged/omnisharp-vim
+    url = https://github.com/OmniSharp/omnisharp-vim
+
+[submodule "vim-dispatch"]
+    path = plugged/vim-dispatch
+    url = https://github.com/tpope/vim-dispatch
+
+[submodule "vim-unimpaired"]
+    path = plugged/vim-unimpaired
+    url = https://github.com/tpope/vim-unimpaired
+
+[submodule "ultisnips"]
+    path = plugged/ultisnips
+    url = https://github.com/SirVer/ultisnips
+
+[submodule "editorconfig-vim"]
+    path = plugged/editorconfig-vim
+    url = https://github.com/editorconfig/editorconfig-vim
+
+[submodule "vim-markdown-preview"]
+    path = plugged/vim-markdown-preview
+    url = https://github.com/JamshedVesuna/vim-markdown-preview
+
+[submodule "vim-fugitive"]
+    path = plugged/vim-fugitive
+    url = https://github.com/tpope/vim-fugitive
+
+[submodule "tagbar"]
+    path = plugged/tagbar
+    url = https://github.com/majutsushi/tagbar
+
+[submodule "vim-fubitive"]
+    path = plugged/vim-fubitive
+    url = https://github.com/tommcdo/vim-fubitive
+
