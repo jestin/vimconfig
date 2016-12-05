@@ -134,7 +134,7 @@ set expandtab
 au FileType c,cpp,h,H,cxx,C,cs,java, set noexpandtab
 
 " status line
-set statusline=%f
+set statusline=%f " is overwritten below as part of vim-fugitive configs
 set laststatus=2
 
 " code folding
