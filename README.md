@@ -2,7 +2,7 @@
 
 Clone to `~/.vim`:
 
-    git clone https://github.com/jestin/vimconfig.git ~/.vim
+    git clone git@github.com:jestin/vimconfig.git 
 
 Create a symbolic link to the vimrc file:
 
