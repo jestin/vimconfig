@@ -106,3 +106,7 @@
     path = plugged/Gundo
     url = https://github.com/vim-scripts/Gundo
 
+[submodule "vim-qargs"]
+    path = plugged/vim-qargs
+    url = https://github.com/nelstrom/vim-qargs
+

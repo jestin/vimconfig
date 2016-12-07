@@ -85,6 +85,8 @@ Plug 'tommcdo/vim-fubitive'
 
 Plug 'vim-scripts/Gundo'
 
+Plug 'nelstrom/vim-qargs'
+
 call plug#end()
 
 set backspace=2 " make backspace work like most other apps"
