@@ -87,6 +87,8 @@ Plug 'vim-scripts/Gundo'
 
 Plug 'nelstrom/vim-qargs'
 
+Plug 'altercation/vim-colors-solarized'
+
 call plug#end()
 
 set backspace=2 " make backspace work like most other apps"

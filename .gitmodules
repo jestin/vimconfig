@@ -110,3 +110,7 @@
     path = plugged/vim-qargs
     url = https://github.com/nelstrom/vim-qargs
 
+[submodule "altercation/vim-colors-solarized"]
+    path = plugged/vim-colors-solarized
+    url = https://github.com/altercation/vim-colors-solarized
+
