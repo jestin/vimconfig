@@ -132,10 +132,10 @@ map <C-z> :SyntasticReset<CR>
 " indentation settings
 set tabstop=4
 set shiftwidth=4
-au FileType html set tabstop=2
-au FileType html set shiftwidth=2
-set expandtab
-au FileType c,cpp,h,H,cxx,C,cs,java, set noexpandtab
+set softtabstop=0 noexpandtab
+
+autocmd Filetype html setlocal ts=2 sts=2 sw=2 nolist
+autocmd Filetype css setlocal ts=2 sts=2 sw=2 nolist
 
 " status line
 set statusline=%f " is overwritten below as part of vim-fugitive configs
