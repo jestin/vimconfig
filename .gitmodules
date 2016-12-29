@@ -114,3 +114,7 @@
     path = plugged/vim-colors-solarized
     url = https://github.com/altercation/vim-colors-solarized
 
+[submodule "reedes/vim-pencil"]
+	path = plugged/vim-pencil
+	url = https://github.com/reedes/vim-pencil
+
