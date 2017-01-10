@@ -243,4 +243,4 @@ let g:OmniSharp_want_snippet=1
 
 
 " colorscheme koehler
-colorscheme pablo
+colorscheme my-pablo
