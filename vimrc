@@ -59,6 +59,7 @@ Plug 'scrooloose/syntastic'
 
 " file tree support
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'ivalkeen/nerdtree-execute'
 
 Plug 'burnettk/vim-angular'
 

@@ -50,6 +50,10 @@
     path = plugged/nerdtree
     url = https://github.com/scrooloose/nerdtree
 
+[submodule "nerdtree-execute"]
+    path = plugged/nerdtree-execute
+    url = https://github.com/ivalkeen/nerdtree-execute
+
 [submodule "vim-angular"]
     path = plugged/vim-angular
     url = https://github.com/burnettk/vim-angular
