@@ -175,6 +175,7 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " YCM stuff
 let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " Tabbar stuff
 nmap <C-t> :TagbarOpenAutoClose<CR>
