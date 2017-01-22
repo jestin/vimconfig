@@ -114,6 +114,9 @@ let NERDTreeIgnore = ['\.o$','\.a$','\.dylib$']
 vnoremap <C-c> "*y"
 
 " syntastic settings
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
