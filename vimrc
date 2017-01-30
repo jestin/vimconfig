@@ -15,7 +15,14 @@ set path+=**
 set wildmenu
 set wildignore+=**/node_modules/**
 
+" custom commands
 command! MakeTags !ctags -R .
+
+fun! HideGutter( arg ) "{{{
+    sign unplace *
+    set nonumber
+endfunction "}}}
+command! -nargs=* HideGutter call HideGutter ( '<args> ' )
 
 call plug#begin('~/.vim/plugged')
 
