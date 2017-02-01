@@ -73,6 +73,7 @@ Plug 'OmniSharp/omnisharp-vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-unimpaired'
 Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 Plug 'editorconfig/editorconfig-vim'
 
@@ -91,6 +92,8 @@ Plug 'nelstrom/vim-qargs'
 Plug 'altercation/vim-colors-solarized'
 
 Plug 'reedes/vim-pencil'
+
+Plug 'vim-scripts/Conque-GDB'
 
 call plug#end()
 
@@ -179,6 +182,10 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 " YCM stuff
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsSnippetsDir = "~/.vim/plugged/vim-snippets/UltiSnips"
 
 " Tabbar stuff
 nmap <C-t> :TagbarOpenAutoClose<CR>

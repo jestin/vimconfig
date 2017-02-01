@@ -122,3 +122,7 @@
 	path = plugged/vim-pencil
 	url = https://github.com/reedes/vim-pencil
 
+[submodule "honza/vim-snippets"]
+	path = plugged/vim-snippets
+	url = https://github.com/honza/vim-snippets
+
