@@ -197,6 +197,7 @@ let vim_markdown_preview_github=1
 set diffopt+=vertical
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 autocmd BufReadPost fugitive://* set bufhidden=delete
+set splitbelow
 
 " YCM stuff
 let g:ycm_autoclose_preview_window_after_completion=1
