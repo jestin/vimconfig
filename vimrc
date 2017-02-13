@@ -154,7 +154,8 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_loc_list_height = 5
 let g:syntastic_javascript_checkers = ['eslint']
-map <C-z> :SyntasticReset<CR>
+map <C-z> <nop>
+nnoremap <leader>z :SyntasticReset<CR>
 
 " indentation settings
 set tabstop=4
