@@ -6,8 +6,14 @@ iab funtion function
 " enter the current millenium
 set nocompatible
 
+" remap leader
+let mapleader = ","
+
 " use undo files
 set undofile
+
+" comment current fold
+nnoremap <leader>k [z<C-v>]zI//<Esc>
 
 " enable syntax and plugins (for netrw)
 syntax enable
