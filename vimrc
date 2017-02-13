@@ -121,6 +121,9 @@ set showmatch
 set hlsearch
 nnoremap <leader><space> :noh<cr>
 
+" easily reload a file from disk if externally modified
+nnoremap <leader>r :edit<cr>
+
 " toggles the tree with ctrl-n
 map <C-n> :NERDTreeToggle<CR>
 
