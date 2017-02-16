@@ -6,6 +6,9 @@ iab funtion function
 " enter the current millenium
 set nocompatible
 
+" remap leader
+let mapleader = ","
+
 " use undo files
 set undofile
 
@@ -106,8 +109,17 @@ set number
 " easy motion prefix
 map <Leader> <Plug>(easymotion-prefix)
 
+" modernize searching
+set incsearch
+set showmatch
+set hlsearch
+nnoremap <leader><space> :noh<cr>
+
 " toggles the tree with ctrl-n
 map <C-n> :NERDTreeToggle<CR>
+
+" easily reload a file from disk if externally modified
+nnoremap <leader>r :edit<cr>
 
 " automatically closed the tree window when the last non-tree window is closed
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -139,7 +151,8 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_loc_list_height = 5
 let g:syntastic_javascript_checkers = ['eslint']
-map <C-z> :SyntasticReset<CR>
+map <C-z> <nop>
+nnoremap <leader>z :SyntasticReset<CR>
 
 " indentation settings
 set tabstop=4
@@ -152,6 +165,7 @@ autocmd Filetype css setlocal ts=2 sts=2 sw=2 nolist
 " status line
 set statusline=%f " is overwritten below as part of vim-fugitive configs
 set laststatus=2
+set splitbelow
 
 " code folding
 set foldmethod=syntax
@@ -169,6 +183,10 @@ let xml_syntax_folding=1      " XML
 let g:vim_json_syntax_conceal=0
 
 autocmd FileType html,xml setlocal foldmethod=indent
+
+" auto comment javascript folds
+autocmd FileType javascript map <buffer> <leader>c [z<C-v>]zI//<Esc>
+nnoremap <leader>k [z<C-v>]zI//<Esc>
 
 " workaround for conflicts with closetag and delimitmate
 let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.php"
@@ -202,52 +220,53 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " Gundo
 nnoremap <C-g> :GundoToggle<CR>
 
+
 " OmniSharp configs
-filetype plugin on
-let g:OmniSharp_host = "http://localhost:2000"
-let g:OmniSharp_timeout = 1
-set noshowmatch
-set completeopt=longest,menuone,preview
-set splitbelow
-let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
-
-augroup omnisharp_commands
-    autocmd!
-    autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
-    autocmd FileType cs nnoremap <leader>b :wa!<cr>:OmniSharpBuildAsync<cr>
-    autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
-    autocmd BufWritePost *.cs call OmniSharp#AddToProject()
-    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
-    autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<cr>
-    autocmd FileType cs nnoremap <leader>fi :OmniSharpFindImplementations<cr>
-    autocmd FileType cs nnoremap <leader>ft :OmniSharpFindType<cr>
-    autocmd FileType cs nnoremap <leader>fs :OmniSharpFindSymbol<cr>
-    autocmd FileType cs nnoremap <leader>fu :OmniSharpFindUsages<cr>
-    autocmd FileType cs nnoremap <leader>fm :OmniSharpFindMembers<cr>
-    autocmd FileType cs nnoremap <leader>x  :OmniSharpFixIssue<cr>
-    autocmd FileType cs nnoremap <leader>fx :OmniSharpFixUsings<cr>
-    autocmd FileType cs nnoremap <leader>tt :OmniSharpTypeLookup<cr>
-    autocmd FileType cs nnoremap <leader>dc :OmniSharpDocumentation<cr>
-    autocmd FileType cs nnoremap <C-K> :OmniSharpNavigateUp<cr>
-    autocmd FileType cs nnoremap <C-J> :OmniSharpNavigateDown<cr>
-
-augroup END
-
-set updatetime=500
-set cmdheight=2
-nnoremap <leader><space> :OmniSharpGetCodeActions<cr>
-vnoremap <leader><space> :call OmniSharp#GetCodeActions('visual')<cr>
-nnoremap <leader>nm :OmniSharpRename<cr>
-nnoremap <F2> :OmniSharpRename<cr>
-command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
-nnoremap <leader>rl :OmniSharpReloadSolution<cr>
-nnoremap <leader>cf :OmniSharpCodeFormat<cr>
-nnoremap <leader>tp :OmniSharpAddToProject<cr>
-nnoremap <leader>ss :OmniSharpStartServer<cr>
-nnoremap <leader>sp :OmniSharpStopServer<cr>
-nnoremap <leader>th :OmniSharpHighlightTypes<cr>
-set hidden
-let g:OmniSharp_want_snippet=1
+" filetype plugin on
+" let g:OmniSharp_host = "http://localhost:2000"
+" let g:OmniSharp_timeout = 1
+" set noshowmatch
+" set completeopt=longest,menuone,preview
+" set splitbelow
+" let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+" 
+" augroup omnisharp_commands
+"     autocmd!
+"     autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+"     autocmd FileType cs nnoremap <leader>b :wa!<cr>:OmniSharpBuildAsync<cr>
+"     autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+"     autocmd BufWritePost *.cs call OmniSharp#AddToProject()
+"     autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+"     autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<cr>
+"     autocmd FileType cs nnoremap <leader>fi :OmniSharpFindImplementations<cr>
+"     autocmd FileType cs nnoremap <leader>ft :OmniSharpFindType<cr>
+"     autocmd FileType cs nnoremap <leader>fs :OmniSharpFindSymbol<cr>
+"     autocmd FileType cs nnoremap <leader>fu :OmniSharpFindUsages<cr>
+"     autocmd FileType cs nnoremap <leader>fm :OmniSharpFindMembers<cr>
+"     autocmd FileType cs nnoremap <leader>x  :OmniSharpFixIssue<cr>
+"     autocmd FileType cs nnoremap <leader>fx :OmniSharpFixUsings<cr>
+"     autocmd FileType cs nnoremap <leader>tt :OmniSharpTypeLookup<cr>
+"     autocmd FileType cs nnoremap <leader>dc :OmniSharpDocumentation<cr>
+"     autocmd FileType cs nnoremap <C-K> :OmniSharpNavigateUp<cr>
+"     autocmd FileType cs nnoremap <C-J> :OmniSharpNavigateDown<cr>
+" 
+" augroup END
+" 
+" set updatetime=500
+" set cmdheight=2
+" nnoremap <leader><space> :OmniSharpGetCodeActions<cr>
+" vnoremap <leader><space> :call OmniSharp#GetCodeActions('visual')<cr>
+" nnoremap <leader>nm :OmniSharpRename<cr>
+" nnoremap <F2> :OmniSharpRename<cr>
+" command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
+" nnoremap <leader>rl :OmniSharpReloadSolution<cr>
+" nnoremap <leader>cf :OmniSharpCodeFormat<cr>
+" nnoremap <leader>tp :OmniSharpAddToProject<cr>
+" nnoremap <leader>ss :OmniSharpStartServer<cr>
+" nnoremap <leader>sp :OmniSharpStopServer<cr>
+" nnoremap <leader>th :OmniSharpHighlightTypes<cr>
+" set hidden
+" let g:OmniSharp_want_snippet=1
 
 
 
