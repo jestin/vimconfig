@@ -186,7 +186,6 @@ autocmd FileType html,xml setlocal foldmethod=indent
 
 " auto comment javascript folds
 autocmd FileType javascript map <buffer> <leader>c [z<C-v>]zI//<Esc>
-nnoremap <leader>k [z<C-v>]zI//<Esc>
 
 " workaround for conflicts with closetag and delimitmate
 let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.php"
