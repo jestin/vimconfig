@@ -6,6 +6,9 @@ iab funtion function
 " enter the current millenium
 set nocompatible
 
+" use undo files
+set undofile
+
 " enable syntax and plugins (for netrw)
 syntax enable
 filetype plugin on
