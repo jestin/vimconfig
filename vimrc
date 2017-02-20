@@ -12,9 +12,11 @@ let mapleader = ","
 " use undo files
 set undofile
 
-" comment current fold
+" comment code in current fold
 autocmd FileType javascript map <buffer> <leader>c [z<C-v>]zI//<Esc>
-"nnoremap <leader>k [z<C-v>]zI//<Esc>
+
+" fix code in current fold
+autocmd FileType javascript map <buffer> <leader>m [z<C-v>]z=
 
 " enable syntax and plugins (for netrw)
 syntax enable
