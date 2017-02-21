@@ -3,6 +3,8 @@ iab teh the
 iab fuction function
 iab funtion function
 
+set spelllang=en_us
+
 " enter the current millenium
 set nocompatible
 
