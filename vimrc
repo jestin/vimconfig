@@ -116,6 +116,8 @@ Plug 'altercation/vim-colors-solarized'
 
 Plug 'reedes/vim-pencil'
 
+Plug 'wikitopian/hardmode'
+
 call plug#end()
 
 set backspace=2 " make backspace work like most other apps"
