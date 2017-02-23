@@ -1,10 +1,3 @@
-" common misspellings
-iab teh the
-iab fuction function
-iab funtion function
-
-set spelllang=en_us
-
 " enter the current millenium
 set nocompatible
 
@@ -13,6 +6,15 @@ let mapleader = ","
 
 " use undo files
 set undofile
+
+" spelling stuff
+set spelllang=en_us
+nmap <silent> <leader>s :set spell!<CR>
+
+" common misspellings
+iab teh the
+iab fuction function
+iab funtion function
 
 " comment code in current fold
 autocmd FileType javascript map <buffer> <leader>c [z<C-v>]zI//<Esc>
@@ -111,6 +113,8 @@ Plug 'vim-scripts/Gundo'
 Plug 'nelstrom/vim-qargs'
 
 Plug 'altercation/vim-colors-solarized'
+
+Plug 'reedes/vim-pencil'
 
 call plug#end()
 
