@@ -1,13 +1,18 @@
-" common misspellings
-iab teh the
-iab fuction function
-iab funtion function
-
 " enter the current millenium
 set nocompatible
 
 " remap leader
 let mapleader = ","
+
+" common misspellings
+iab teh the
+iab fuction function
+iab funtion function
+
+" set default language
+set spelllang=en_us
+
+nmap <silent> <leader>s :set spell!<CR>
 
 " use undo files
 set undofile
@@ -184,8 +189,13 @@ let g:vim_json_syntax_conceal=0
 
 autocmd FileType html,xml setlocal foldmethod=indent
 
-" auto comment javascript folds
+" auto comment of current fold 
 autocmd FileType javascript map <buffer> <leader>c [z<C-v>]zI//<Esc>
+autocmd FileType c,cpp,h,hpp map <buffer> <leader>c [zk<C-v>j]zI//<Esc>
+
+" fix indent of current fold
+autocmd FileType javascript map <buffer> <leader>m [z<C-v>]z=
+autocmd FileType c,cpp,h,hpp map <buffer> <leader>m [zk<C-v>j]z=
 
 " workaround for conflicts with closetag and delimitmate
 let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.php"
