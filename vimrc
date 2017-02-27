@@ -104,8 +104,6 @@ Plug 'altercation/vim-colors-solarized'
 
 Plug 'reedes/vim-pencil'
 
-Plug 'vim-scripts/Conque-GDB'
-
 call plug#end()
 
 set backspace=2 " make backspace work like most other apps"
