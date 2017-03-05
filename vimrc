@@ -103,11 +103,13 @@ Plug 'nelstrom/vim-qargs'
 Plug 'altercation/vim-colors-solarized'
 
 Plug 'reedes/vim-pencil'
+Plug 'reedes/vim-wordy'
+Plug 'reedes/vim-lexical'
 
 call plug#end()
 
 set backspace=2 " make backspace work like most other apps"
-set number
+set relativenumber
 
 " easy motion prefix
 map <Leader> <Plug>(easymotion-prefix)
@@ -201,6 +203,14 @@ au FileType xml,html,phtml,php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],
 
 " for markdown previewer
 let vim_markdown_preview_github=1
+
+" lexical stuff
+augroup lexical
+	autocmd!
+	autocmd FileType markdown,mkd,md,ad,asciidoc call lexical#init()
+	autocmd FileType textile call lexical#init()
+	autocmd FileType text call lexical#init({ 'spell': 0 })
+augroup end
 
 " vim-fugitive stuff
 set diffopt+=vertical
