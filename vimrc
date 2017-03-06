@@ -37,6 +37,7 @@ command! MakeTags !ctags -R .
 fun! HideGutter( arg ) "{{{
     sign unplace *
     set nonumber
+    set norelativenumber
 endfunction "}}}
 command! -nargs=* HideGutter call HideGutter ( '<args> ' )
 
@@ -122,6 +123,7 @@ call plug#end()
 
 set backspace=2 " make backspace work like most other apps"
 set number
+set relativenumber
 
 " easy motion prefix
 map <Leader> <Plug>(easymotion-prefix)
