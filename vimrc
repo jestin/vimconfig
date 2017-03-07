@@ -1,8 +1,3 @@
-" common misspellings
-iab teh the
-iab fuction function
-iab funtion function
-
 " enter the current millenium
 set nocompatible
 
@@ -12,9 +7,20 @@ let mapleader = ","
 " use undo files
 set undofile
 
-" comment current fold
+" spelling stuff
+set spelllang=en_us
+nmap <silent> <leader>s :set spell!<CR>
+
+" common misspellings
+iab teh the
+iab fuction function
+iab funtion function
+
+" comment code in current fold
 autocmd FileType javascript map <buffer> <leader>c [z<C-v>]zI//<Esc>
-"nnoremap <leader>k [z<C-v>]zI//<Esc>
+
+" fix code in current fold
+autocmd FileType javascript map <buffer> <leader>m [z<C-v>]z=
 
 " enable syntax and plugins (for netrw)
 syntax enable
@@ -31,6 +37,7 @@ command! MakeTags !ctags -R .
 fun! HideGutter( arg ) "{{{
     sign unplace *
     set nonumber
+    set norelativenumber
 endfunction "}}}
 command! -nargs=* HideGutter call HideGutter ( '<args> ' )
 
@@ -108,13 +115,24 @@ Plug 'nelstrom/vim-qargs'
 
 Plug 'altercation/vim-colors-solarized'
 
+Plug 'reedes/vim-pencil'
+
+Plug 'wikitopian/hardmode'
+
 call plug#end()
 
 set backspace=2 " make backspace work like most other apps"
 set number
+set relativenumber
 
 " easy motion prefix
 map <Leader> <Plug>(easymotion-prefix)
+
+" Move to line over windows
+nmap <Leader>J <Plug>(easymotion-overwin-line)
+
+" Move to word over windows
+nmap <Leader>W <Plug>(easymotion-overwin-w)
 
 " modernize searching
 set incsearch
