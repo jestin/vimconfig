@@ -115,6 +115,12 @@ set relativenumber
 " easy motion prefix
 map <Leader> <Plug>(easymotion-prefix)
 
+" Move to line over windows
+nmap <Leader>J <Plug>(easymotion-overwin-line)
+
+" Move to word over windows
+nmap <Leader>W <Plug>(easymotion-overwin-w)
+
 " modernize searching
 set incsearch
 set showmatch
