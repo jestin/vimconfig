@@ -217,8 +217,8 @@ function! SentencePerLine(start, end)
 	silent execute "normal! $"
 endfunction
 
-au FileType markdown,mkd,md,ad,asciidoc,adoc set formatexpr=SentencePerLine(v:lnum,v:lnum+v:count-1)
-au FileType markdown,mkd,md,ad,asciidoc,adoc set wrap linebreak nolist tw=80 wm=3
+au FileType ad,asciidoc,adoc set formatexpr=SentencePerLine(v:lnum,v:lnum+v:count-1)
+au FileType ad,asciidoc,adoc set wrap linebreak nolist tw=80 wm=3
 
 " lexical stuff
 augroup lexical
