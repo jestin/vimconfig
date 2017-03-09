@@ -211,10 +211,19 @@ au FileType xml,html,phtml,php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],
 " for markdown previewer
 let vim_markdown_preview_github=1
 
+" a custom format expression for text files
+function! SentencePerLine(start, end)
+	silent execute a:start.','.a:end.'s/[.!?]\zs\s\+/\r/g'
+	silent execute "normal! $"
+endfunction
+
+au FileType markdown,mkd,md,ad,asciidoc,adoc set formatexpr=SentencePerLine(v:lnum,v:lnum+v:count-1)
+au FileType markdown,mkd,md,ad,asciidoc,adoc set wrap linebreak nolist tw=80 wm=3
+
 " lexical stuff
 augroup lexical
 	autocmd!
-	autocmd FileType markdown,mkd,md,ad,asciidoc call lexical#init()
+	autocmd FileType markdown,mkd,md,ad,asciidoc,adoc call lexical#init()
 	autocmd FileType textile call lexical#init()
 	autocmd FileType text call lexical#init({ 'spell': 0 })
 augroup end
