@@ -92,6 +92,8 @@ Plug 'tmhedberg/matchit'
 
 Plug 'alvan/vim-closetag'
 
+Plug 'rstacruz/sparkup'
+
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-unimpaired'
