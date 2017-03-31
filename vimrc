@@ -143,9 +143,13 @@ let NERDTreeIgnore = ['\.o$','\.a$','\.dylib$']
 " allows for ctrl-c copying to the system clipboard from visual mode
 vnoremap <C-c> "*y"
 
+" create a Cmake command, calling cmake with dispatch
+command Cmake Dispatch cmake .
+
 " syntastic settings
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+let g:syntastic_cpp_checkers = ['clang_check', 'gcc']
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -236,6 +240,7 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 " YCM stuff
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_always_populate_location_list=1
 
 " Ultisnips
 let g:UltiSnipsExpandTrigger="<c-e>"
