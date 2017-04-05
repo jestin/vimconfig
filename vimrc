@@ -291,3 +291,20 @@ nnoremap <C-g> :GundoToggle<CR>
 " nnoremap <leader>th :OmniSharpHighlightTypes<cr>
 " set hidden
 " let g:OmniSharp_want_snippet=1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+colorscheme work
