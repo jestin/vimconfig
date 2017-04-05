@@ -74,6 +74,8 @@ Plug 'mhinz/vim-signify'
 " features which I’ll talk about below)
 Plug 'pangloss/vim-javascript'
 
+Plug 'heavenshell/vim-jsdoc'
+
 " We have to search for a lot of stuff across a lot of files, Ag does it best.
 Plug 'rking/ag.vim'
 
@@ -126,6 +128,10 @@ call plug#end()
 set backspace=2 " make backspace work like most other apps"
 set number
 set relativenumber
+
+" tab navigation
+nnoremap H gT
+nnoremap L gt
 
 " easy motion prefix
 map <Leader> <Plug>(easymotion-prefix)
