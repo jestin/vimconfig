@@ -114,6 +114,9 @@ set backspace=2 " make backspace work like most other apps"
 set number
 set relativenumber
 
+nnoremap H gT
+nnoremap L gt
+
 " easy motion prefix
 map <Leader> <Plug>(easymotion-prefix)
 
