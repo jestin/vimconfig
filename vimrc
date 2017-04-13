@@ -232,12 +232,18 @@ let vim_markdown_preview_github=1
 
 " a custom format expression for text files
 function! SentencePerLine(start, end)
+	let list = []
+	let save_cursor = getcurpos()
+	silent execute a:start.','.a:end.'s/[.!?]\zs\s\+/\r\=add(list, submatch(1))/gn'
 	silent execute a:start.','.a:end.'s/[.!?]\zs\s\+/\r/g'
-	silent execute "normal! $"
+	let newLines = len(list)
+	call setpos('.', save_cursor)
+	" silent execute 'normal! '.newLines."j"
+	" silent execute 'normal! $'
 endfunction
 
 au FileType ad,asciidoc,adoc set formatexpr=SentencePerLine(v:lnum,v:lnum+v:count-1)
-au FileType ad,asciidoc,adoc set wrap linebreak nolist tw=80 wm=3
+au FileType ad,asciidoc,adoc set wrap linebreak nolist tw=80 wm=3 " fo-=tc
 
 " lexical stuff
 augroup lexical
