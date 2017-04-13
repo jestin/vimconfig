@@ -129,9 +129,18 @@ set backspace=2 " make backspace work like most other apps"
 set number
 set relativenumber
 
-" tab navigation
+" tab navigation that remaps existing H L M functions
 nnoremap H gT
 nnoremap L gt
+nnoremap gH H
+nnoremap gL L
+nnoremap gM M
+
+" window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " easy motion prefix
 map <Leader> <Plug>(easymotion-prefix)
