@@ -82,7 +82,7 @@ Plug 'alvan/vim-closetag'
 
 Plug 'rstacruz/sparkup'
 
-Plug 'OmniSharp/omnisharp-vim'
+" Plug 'OmniSharp/omnisharp-vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-unimpaired'
 Plug 'SirVer/ultisnips'
@@ -159,7 +159,7 @@ let NERDTreeIgnore = ['\.o$','\.a$','\.dylib$']
 vnoremap <C-c> "*y"
 
 " create a Cmake command, calling cmake with dispatch
-command Cmake Dispatch cmake .
+command! Cmake Dispatch cmake .
 
 " syntastic settings
 let g:syntastic_cpp_compiler = 'clang++'
@@ -330,4 +330,5 @@ nnoremap <C-g> :GundoToggle<CR>
 
 
 " colorscheme koehler
-colorscheme my-pablo
+colorscheme default
+set background=dark
