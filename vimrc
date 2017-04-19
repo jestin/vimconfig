@@ -330,5 +330,5 @@ nnoremap <C-g> :GundoToggle<CR>
 
 
 " colorscheme koehler
-colorscheme default
+colorscheme studio-default
 set background=dark
