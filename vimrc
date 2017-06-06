@@ -7,6 +7,8 @@ let mapleader = ","
 " use undo files
 set undofile
 
+set mouse=a
+
 " spelling stuff
 set spelllang=en_us
 nmap <silent> <leader>s :set spell!<CR>
