@@ -256,6 +256,9 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " Gundo
 nnoremap <C-g> :GundoToggle<CR>
 
+" json pretty print
+nnoremap <leader>p :%!python -m json.tool<cr>:set ft=json<cr>
+
 " OmniSharp configs
 " filetype plugin on
 " let g:OmniSharp_host = "http://localhost:2000"
