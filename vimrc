@@ -88,6 +88,8 @@ Plug 'scrooloose/syntastic'
 " file tree support
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 Plug 'burnettk/vim-angular'
 
 Plug 'othree/html5.vim'
