@@ -92,6 +92,9 @@ Plug 'burnettk/vim-angular'
 
 Plug 'othree/html5.vim'
 
+Plug 'posva/vim-vue'
+Plug 'sekel/vim-vue-syntastic'
+
 Plug 'tmhedberg/matchit'
 
 Plug 'alvan/vim-closetag'
