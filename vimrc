@@ -128,7 +128,13 @@ Plug 'reedes/vim-pencil'
 
 Plug 'wikitopian/hardmode'
 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 call plug#end()
+
+" airline should use powerline fonts
+let g:airline_powerline_fonts = 1
 
 set backspace=2 " make backspace work like most other apps"
 set number
