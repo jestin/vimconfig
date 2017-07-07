@@ -21,6 +21,9 @@ iab funtion function
 " comment code in current fold
 autocmd FileType javascript map <buffer> <leader>c [z<C-v>]zI//<Esc>
 
+" select code in current fold
+autocmd FileType javascript map <buffer> <leader>v [z<S-v>]z
+
 " fix code in current fold
 autocmd FileType javascript map <buffer> <leader>m [z<C-v>]z=
 
