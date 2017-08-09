@@ -268,7 +268,10 @@ let g:signify_vcs_list = [ 'git' ]
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Go to JS definition
-autocmd FileType javascript nnoremap <leader>d :TernDef<cr>
+autocmd FileType javascript nnoremap <leader>d :TernDef<cr>zz
+
+" Go to JS references
+autocmd FileType javascript nnoremap <leader>D :TernRef<cr>
 
 " Gundo
 nnoremap <C-g> :GundoToggle<CR>
