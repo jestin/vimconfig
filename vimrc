@@ -279,6 +279,11 @@ nnoremap <C-g> :GundoToggle<CR>
 " json pretty print
 nnoremap <leader>p :%!python -m json.tool<cr>:set ft=json<cr>
 
+" shortcuts for searching the word under the cursor
+nnoremap <leader>f yiw/<c-r>0<cr>
+nnoremap <leader>F yiw:tabe<cr>:Ag <c-r>0<cr><cr>gg/\c<c-r>0<cr>
+nnoremap <leader>x :cclose<cr>:q<cr>H:noh<cr>
+
 " OmniSharp configs
 " filetype plugin on
 " let g:OmniSharp_host = "http://localhost:2000"
