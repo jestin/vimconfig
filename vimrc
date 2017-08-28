@@ -280,9 +280,9 @@ nnoremap <C-g> :GundoToggle<CR>
 nnoremap <leader>p :%!python -m json.tool<cr>:set ft=json<cr>
 
 " shortcuts for searching the word under the cursor
-nnoremap <leader>f yiw/<c-r>0<cr>
-nnoremap <leader>F yiw:tabe<cr>:Ag <c-r>0<cr><cr>gg/\c<c-r>0<cr>
-nnoremap <leader>x :cclose<cr>:q<cr>H:noh<cr>
+nnoremap <leader>f mfyiw/<c-r>0<cr>
+nnoremap <leader>F mfyiw:tabe<cr>:Ag <c-r>0<cr><cr>gg/\c<c-r>0<cr>
+nnoremap <leader>x :cclose<cr>:q<cr>H:noh<cr>`f
 
 " OmniSharp configs
 " filetype plugin on
