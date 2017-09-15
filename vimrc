@@ -363,3 +363,10 @@ nnoremap <leader>x :cclose<cr>:q<cr>H:noh<cr>`f
 
 
 colorscheme work
+
+" override some colors based on my usage of emoji as symbols for syntastic
+" errors and warnings
+highlight SyntasticErrorSign guifg=white guibg=black
+highlight SyntasticWarningSign guifg=white guibg=black
+highlight SyntasticStyleErrorSign guifg=white guibg=black
+highlight SyntasticStyleWarningSign guifg=white guibg=black
