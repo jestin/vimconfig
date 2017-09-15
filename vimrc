@@ -207,7 +207,10 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
 let g:syntastic_javascript_checkers = ['eslint']
 map <C-z> <nop>
-nnoremap <leader>z :SyntasticReset<CR>
+
+" mappings to close the locaion and quickfix lists
+nnoremap <leader>z :lclose<cr>
+nnoremap <leader>q :cclose<cr>
 
 " indentation settings
 set tabstop=4
