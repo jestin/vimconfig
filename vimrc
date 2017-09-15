@@ -206,6 +206,19 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_loc_list_height = 5
 let g:syntastic_javascript_checkers = ['eslint']
+
+let g:syntastic_html_tidy_ignore_errors=[
+            \ " proprietary attribute " ,
+            \ "trimming empty \<", 
+            \ "inserting implicit ", 
+            \ "unescaped \&" , 
+            \ "lacks \"action", 
+            \ "lacks value", 
+            \ "lacks \"src", 
+            \ "is not recognized!", 
+            \ "discarding unexpected", 
+            \ "replacing obsolete "]
+
 map <C-z> <nop>
 
 " mappings to close the locaion and quickfix lists
