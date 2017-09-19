@@ -4,6 +4,9 @@ set nocompatible
 " remap leader
 let mapleader = ","
 
+" visual indicator which row the cursor is on
+set cursorline
+
 " use undo files
 set undofile
 
