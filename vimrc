@@ -136,6 +136,8 @@ Plug 'wikitopian/hardmode'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'tpope/vim-rhubarb'
+
 call plug#end()
 
 " airline should use powerline fonts
