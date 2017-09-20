@@ -5,7 +5,13 @@ set nocompatible
 let mapleader = ","
 
 " visual indicator which row the cursor is on
-set cursorline
+augroup CursorLine
+    au!
+    au VimEnter * setlocal cursorline
+    au WinEnter * setlocal cursorline
+    au BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+augroup ENDujkjjk
 
 " use undo files
 set undofile
