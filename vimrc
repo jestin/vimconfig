@@ -381,3 +381,5 @@ highlight SyntasticErrorSign guifg=white guibg=black
 highlight SyntasticWarningSign guifg=white guibg=black
 highlight SyntasticStyleErrorSign guifg=white guibg=black
 highlight SyntasticStyleWarningSign guifg=white guibg=black
+highlight SyntasticErrorLine ctermbg=52
+highlight SyntasticWarningLine ctermbg=94
