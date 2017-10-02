@@ -147,6 +147,8 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'tpope/vim-rhubarb'
 
+Plug 'Valloric/ListToggle'
+
 call plug#end()
 
 " airline should use powerline fonts
@@ -237,9 +239,9 @@ let g:syntastic_html_tidy_ignore_errors=[
 
 map <C-z> <nop>
 
-" mappings to close the locaion and quickfix lists
-nnoremap <leader>z :lclose<cr>
-nnoremap <leader>q :cclose<cr>
+" mappings to toggle the locaion and quickfix lists
+let g:lt_location_list_toggle_map = '<leader>z'
+let g:lt_quickfix_list_toggle_map = '<leader>q'
 
 " indentation settings
 set tabstop=4
