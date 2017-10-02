@@ -218,6 +218,11 @@ let g:syntastic_style_warning_symbol = '💩'
 let g:syntastic_loc_list_height = 5
 let g:syntastic_javascript_checkers = ['eslint']
 
+" Point syntastic checker at locally installed `eslint` if it exists.
+if executable('node_modules/.bin/eslint')
+    let g:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
+endif
+
 let g:syntastic_html_tidy_ignore_errors=[
             \ " proprietary attribute " ,
             \ "trimming empty \<", 
