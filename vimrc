@@ -4,8 +4,19 @@ set nocompatible
 " remap leader
 let mapleader = ","
 
+" visual indicator which row the cursor is on
+augroup CursorLine
+    au!
+    au VimEnter * setlocal cursorline
+    au WinEnter * setlocal cursorline
+    au BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+augroup ENDujkjjk
+
 " use undo files
 set undofile
+
+set mouse=a
 
 " spelling stuff
 set spelllang=en_us
@@ -18,6 +29,9 @@ iab funtion function
 
 " comment code in current fold
 autocmd FileType javascript map <buffer> <leader>c [z<C-v>]zI//<Esc>
+
+" select code in current fold
+autocmd FileType javascript map <buffer> <leader>v [z<S-v>]z
 
 " fix code in current fold
 autocmd FileType javascript map <buffer> <leader>m [z<C-v>]z=
@@ -74,6 +88,8 @@ Plug 'mhinz/vim-signify'
 " features which I’ll talk about below)
 Plug 'pangloss/vim-javascript'
 
+Plug 'heavenshell/vim-jsdoc'
+
 " We have to search for a lot of stuff across a lot of files, Ag does it best.
 Plug 'rking/ag.vim'
 
@@ -84,13 +100,20 @@ Plug 'scrooloose/syntastic'
 " file tree support
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 Plug 'burnettk/vim-angular'
 
 Plug 'othree/html5.vim'
 
+Plug 'posva/vim-vue'
+Plug 'sekel/vim-vue-syntastic'
+
 Plug 'tmhedberg/matchit'
 
 Plug 'alvan/vim-closetag'
+
+Plug 'rstacruz/sparkup'
 
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'tpope/vim-dispatch'
@@ -119,11 +142,34 @@ Plug 'reedes/vim-pencil'
 
 Plug 'wikitopian/hardmode'
 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'tpope/vim-rhubarb'
+
+Plug 'Valloric/ListToggle'
+
 call plug#end()
+
+" airline should use powerline fonts
+let g:airline_powerline_fonts = 1
 
 set backspace=2 " make backspace work like most other apps"
 set number
 set relativenumber
+
+" tab navigation that remaps existing H L M functions
+nnoremap H gT
+nnoremap L gt
+nnoremap gH H
+nnoremap gL L
+nnoremap gM M
+
+" window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " easy motion prefix
 map <Leader> <Plug>(easymotion-prefix)
@@ -151,7 +197,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " show hidden files in the tree
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.o$','\.a$','\.dylib$']
+let NERDTreeIgnore = ['\.o$','\.a$','\.dylib$','[._]s[wp]','[._]*.un\~']
 
 " allows for ctrl-c copying to the system clipboard from visual mode
 vnoremap <C-c> "*y"
@@ -166,15 +212,36 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" let g:syntastic_error_symbol = '❌'
-" let g:syntastic_style_error_symbol = '⁉️'
-" let g:syntastic_warning_symbol = '⚠️'
-" let g:syntastic_style_warning_symbol = '💩'
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
 
 let g:syntastic_loc_list_height = 5
 let g:syntastic_javascript_checkers = ['eslint']
+
+" Point syntastic checker at locally installed `eslint` if it exists.
+if executable('node_modules/.bin/eslint')
+    let g:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
+endif
+
+let g:syntastic_html_tidy_ignore_errors=[
+            \ " proprietary attribute " ,
+            \ "trimming empty \<", 
+            \ "inserting implicit ", 
+            \ "unescaped \&" , 
+            \ "lacks \"action", 
+            \ "lacks value", 
+            \ "lacks \"src", 
+            \ "is not recognized!", 
+            \ "discarding unexpected", 
+            \ "replacing obsolete "]
+
 map <C-z> <nop>
-nnoremap <leader>z :SyntasticReset<CR>
+
+" mappings to toggle the locaion and quickfix lists
+let g:lt_location_list_toggle_map = '<leader>z'
+let g:lt_quickfix_list_toggle_map = '<leader>q'
 
 " indentation settings
 set tabstop=4
@@ -234,8 +301,22 @@ let g:signify_vcs_list = [ 'git' ]
 " EditorConfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
+" Go to JS definition
+autocmd FileType javascript nnoremap <leader>d :TernDef<cr>zz
+
+" Go to JS references
+autocmd FileType javascript nnoremap <leader>D :TernRef<cr>
+
 " Gundo
 nnoremap <C-g> :GundoToggle<CR>
+
+" json pretty print
+nnoremap <leader>p :%!python -m json.tool<cr>:set ft=json<cr>
+
+" shortcuts for searching the word under the cursor
+nnoremap <leader>f mfyiw/<c-r>0<cr>zz
+nnoremap <leader>F mfyiw:tabe<cr>:Ag <c-r>0<cr><cr>gg/\c<c-r>0<cr>zz
+nnoremap <leader>x :cclose<cr>:q<cr>H:noh<cr>`f
 
 " OmniSharp configs
 " filetype plugin on
@@ -283,3 +364,29 @@ nnoremap <C-g> :GundoToggle<CR>
 " nnoremap <leader>th :OmniSharpHighlightTypes<cr>
 " set hidden
 " let g:OmniSharp_want_snippet=1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+colorscheme work
+
+" override some colors based on my usage of emoji as symbols for syntastic
+" errors and warnings
+highlight SyntasticErrorSign guifg=white guibg=black
+highlight SyntasticWarningSign guifg=white guibg=black
+highlight SyntasticStyleErrorSign guifg=white guibg=black
+highlight SyntasticStyleWarningSign guifg=white guibg=black
+highlight SyntasticErrorLine ctermbg=52
+highlight SyntasticWarningLine ctermbg=94
