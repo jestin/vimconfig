@@ -11,7 +11,7 @@ augroup CursorLine
     au WinEnter * setlocal cursorline
     au BufWinEnter * setlocal cursorline
     au WinLeave * setlocal nocursorline
-augroup ENDujkjjk
+augroup END
 
 " use undo files
 set undofile
