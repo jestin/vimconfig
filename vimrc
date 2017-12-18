@@ -118,6 +118,8 @@ Plug 'rstacruz/sparkup'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'SirVer/ultisnips'
 
 Plug 'honza/vim-snippets'
@@ -280,10 +282,11 @@ au FileType xml,html,phtml,php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],
 let vim_markdown_preview_github=1
 
 " vim-fugitive stuff
-set diffopt+=vertical
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 autocmd BufReadPost fugitive://* set bufhidden=delete
 set splitbelow
+set diffopt+=vertical
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
 " YCM stuff
 let g:ycm_autoclose_preview_window_after_completion=1
