@@ -199,7 +199,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " show hidden files in the tree
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.o$','\.a$','\.dylib$','[._]s[wp]','[._]*.un\~']
+let NERDTreeIgnore = ['\.o$','\.a$','\.dylib$','[._]swp','[._]*.un\~']
 
 " allows for ctrl-c copying to the system clipboard from visual mode
 vnoremap <C-c> "*y"
