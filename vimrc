@@ -28,13 +28,13 @@ iab fuction function
 iab funtion function
 
 " comment code in current fold
-autocmd FileType javascript,html,json map <buffer> <leader>c [z<C-v>]zI//<Esc>
+autocmd FileType javascript,html,vue,json map <buffer> <leader>c [z<C-v>]zI// <Esc>
 
 " select code in current fold
-autocmd FileType javascript,html,json map <buffer> <leader>v [z<S-v>]z
+autocmd FileType javascript,html,vue,json map <buffer> <leader>v [z<S-v>]z
 
 " fix code in current fold
-autocmd FileType javascript,html,json map <buffer> <leader>m [z<C-v>]z=
+autocmd FileType javascript,html,vue,json map <buffer> <leader>m [z<C-v>]z=
 
 " enable syntax and plugins (for netrw)
 syntax enable
@@ -276,7 +276,7 @@ autocmd FileType html,xml setlocal foldmethod=indent
 
 " workaround for conflicts with closetag and delimitmate
 let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.php"
-au FileType xml,html,phtml,php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],{:}"
+au FileType xml,html,vue,phtml,php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 " for markdown previewer
 let vim_markdown_preview_github=1
