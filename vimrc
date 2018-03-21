@@ -321,6 +321,12 @@ nnoremap <leader>f mfyiw/<c-r>0<cr>zz
 nnoremap <leader>F mfyiw:tabe<cr>:Ag <c-r>0<cr><cr>gg/\c<c-r>0<cr>zz
 nnoremap <leader>x :cclose<cr>:q<cr>H:noh<cr>`f
 
+" jsdoc stuff
+let g:jsdoc_allow_input_prompt = 1
+let g:jsdoc_input_description = 1
+let g:jsdoc_additional_descriptions = 1
+let g:jsdoc_enable_es6 = 1
+
 " OmniSharp configs
 " filetype plugin on
 " let g:OmniSharp_host = "http://localhost:2000"
