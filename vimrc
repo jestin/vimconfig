@@ -18,6 +18,10 @@ set undofile
 
 set mouse=a
 
+" set listchars=tab:>-
+set showbreak=↪\ 
+set listchars=tab:>-,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+
 " spelling stuff
 set spelllang=en_us
 nmap <silent> <leader>s :set spell!<CR>
@@ -96,6 +100,7 @@ Plug 'rking/ag.vim'
 " Provides automatic JSHint linting. (among many other JavaScript linters,
 " check the docs)
 Plug 'scrooloose/syntastic'
+Plug 'mtscout6/syntastic-local-eslint.vim'
 
 " file tree support
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -115,7 +120,7 @@ Plug 'alvan/vim-closetag'
 
 Plug 'rstacruz/sparkup'
 
-Plug 'OmniSharp/omnisharp-vim'
+" Plug 'OmniSharp/omnisharp-vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
@@ -134,7 +139,7 @@ Plug 'majutsushi/tagbar'
 
 Plug 'tommcdo/vim-fubitive'
 
-Plug 'vim-scripts/Gundo'
+Plug 'mbbill/undotree'
 
 Plug 'nelstrom/vim-qargs'
 
@@ -310,8 +315,9 @@ autocmd FileType javascript nnoremap <leader>d :TernDef<cr>zz
 " Go to JS references
 autocmd FileType javascript nnoremap <leader>D :TernRef<cr>
 
-" Gundo
-nnoremap <C-g> :GundoToggle<CR>
+" undotree
+nnoremap <C-g> :UndotreeToggle<CR>
+let g:undotree_WindowLayout = 4
 
 " json pretty print
 nnoremap <leader>p :%!python -m json.tool<cr>:set ft=json<cr>
