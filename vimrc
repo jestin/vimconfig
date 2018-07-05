@@ -327,6 +327,9 @@ nnoremap <leader>f mfyiw/<c-r>0<cr>zz
 nnoremap <leader>F mfyiw:tabe<cr>:Ag <c-r>0<cr><cr>gg/\c<c-r>0<cr>zz
 nnoremap <leader>x :cclose<cr>:q<cr>H:noh<cr>`f
 
+" useful for doing commits
+nnoremap <leader>gb :let @g = system("git rev-parse --abbrev-ref HEAD" . shellescape(expand('<cfile>')))<CR>"gpkJA<Space>
+
 " jsdoc stuff
 let g:jsdoc_allow_input_prompt = 1
 let g:jsdoc_input_description = 1
