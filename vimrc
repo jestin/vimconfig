@@ -32,13 +32,13 @@ iab fuction function
 iab funtion function
 
 " comment code in current fold
-autocmd FileType javascript,html,vue,json map <buffer> <leader>c [z<C-v>]zI// <Esc>
+autocmd FileType javascript,html,vue,json,h,hpp,c,cpp map <buffer> <leader>c [z<C-v>]zI// <Esc>
 
 " select code in current fold
-autocmd FileType javascript,html,vue,json map <buffer> <leader>v [z<S-v>]z
+autocmd FileType javascript,html,vue,json,h,hpp,c,cpp map <buffer> <leader>v [z<S-v>]z
 
 " fix code in current fold
-autocmd FileType javascript,html,vue,json map <buffer> <leader>m [z<C-v>]z=
+autocmd FileType javascript,html,vue,json,h,hpp,c,cpp map <buffer> <leader>m [z<C-v>]z=
 
 " enable syntax and plugins (for netrw)
 syntax enable
@@ -96,6 +96,9 @@ Plug 'heavenshell/vim-jsdoc'
 
 " We have to search for a lot of stuff across a lot of files, Ag does it best.
 Plug 'rking/ag.vim'
+
+" Maybe ripgrep does it best...let's try it and see
+Plug 'jremmen/vim-ripgrep'
 
 " Provides automatic JSHint linting. (among many other JavaScript linters,
 " check the docs)
@@ -156,10 +159,19 @@ Plug 'tpope/vim-rhubarb'
 
 Plug 'Valloric/ListToggle'
 
+Plug 'kristijanhusak/vim-carbon-now-sh'
+
+" handle ansi colors
+Plug 'powerman/vim-plugin-AnsiEsc'
+
 call plug#end()
 
 " airline should use powerline fonts
 let g:airline_powerline_fonts = 1
+
+" ripgrep settings
+let g:rg_command = 'rg --vimgrep --smart-case'
+let g:rg_highlight = 1
 
 set backspace=2 " make backspace work like most other apps"
 set number
@@ -208,6 +220,9 @@ let NERDTreeIgnore = ['\.o$','\.a$','\.dylib$','[._]swp','[._]*.un\~']
 
 " allows for ctrl-c copying to the system clipboard from visual mode
 vnoremap <C-c> "*y"
+
+" set up fzf
+set rtp+=/usr/local/opt/fzf
 
 " syntastic settings
 set statusline+=%#warningmsg#
@@ -300,7 +315,7 @@ let g:ycm_autoclose_preview_window_after_completion=1
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsSnippetsDir="~/.vim/plugged/vim-snippets/UltiSnips"
 
-" Tabbar stuff
+" tagbar stuff
 nmap <C-t> :TagbarOpenAutoClose<CR>
 
 " signify settings
@@ -324,7 +339,7 @@ nnoremap <leader>p :%!python -m json.tool<cr>:set ft=json<cr>
 
 " shortcuts for searching the word under the cursor
 nnoremap <leader>f mfyiw/<c-r>0<cr>zz
-nnoremap <leader>F mfyiw:tabe<cr>:Ag <c-r>0<cr><cr>gg/\c<c-r>0<cr>zz
+nnoremap <leader>F mfyiw:tabe<cr>:Rg <c-r>0<cr><cr>gg/\c<c-r>0<cr>zz
 nnoremap <leader>x :cclose<cr>:q<cr>H:noh<cr>`f
 
 " useful for doing commits
