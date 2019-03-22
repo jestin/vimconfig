@@ -32,13 +32,13 @@ iab fuction function
 iab funtion function
 
 " comment code in current fold
-autocmd FileType javascript,html,vue,json,h,hpp,c,cpp map <buffer> <leader>c [z<C-v>]zI// <Esc>
+autocmd FileType javascript,typescript,html,vue,json,h,hpp,c,cpp map <buffer> <leader>c [z<C-v>]zI// <Esc>
 
 " select code in current fold
-autocmd FileType javascript,html,vue,json,h,hpp,c,cpp map <buffer> <leader>v [z<S-v>]z
+autocmd FileType javascript,typescript,html,vue,json,h,hpp,c,cpp map <buffer> <leader>v [z<S-v>]z
 
 " fix code in current fold
-autocmd FileType javascript,html,vue,json,h,hpp,c,cpp map <buffer> <leader>m [z<C-v>]z=
+autocmd FileType javascript,typescript,html,vue,json,h,hpp,c,cpp map <buffer> <leader>m [z<C-v>]z=
 
 " enable syntax and plugins (for netrw)
 syntax enable
@@ -59,6 +59,9 @@ fun! HideGutter( arg ) "{{{
 endfunction "}}}
 command! -nargs=* HideGutter call HideGutter ( '<args> ' )
 
+" ale - this is above plug loads so the completer works
+let g:ale_completion_enabled = 1
+
 call plug#begin('~/.vim/plugged')
 
 " Makes those funny alignment issues trivial.
@@ -71,9 +74,9 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'Raimondi/delimitMate'
 
 " The best completion engine I’ve found.
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 
-Plug 'ternjs/tern_for_vim'
+" Plug 'ternjs/tern_for_vim'
 
 " allows you to edit your quickfix list and write the changes to their files.
 " Like find and replace, but better.
@@ -102,8 +105,8 @@ Plug 'jremmen/vim-ripgrep'
 
 " Provides automatic JSHint linting. (among many other JavaScript linters,
 " check the docs)
-Plug 'scrooloose/syntastic'
-Plug 'mtscout6/syntastic-local-eslint.vim'
+" Plug 'scrooloose/syntastic'
+" Plug 'mtscout6/syntastic-local-eslint.vim'
 
 " file tree support
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -115,7 +118,11 @@ Plug 'burnettk/vim-angular'
 Plug 'othree/html5.vim'
 
 Plug 'posva/vim-vue'
-Plug 'sekel/vim-vue-syntastic'
+" Plug 'sekel/vim-vue-syntastic'
+
+Plug 'w0rp/ale'
+
+Plug 'leafgarland/typescript-vim'
 
 Plug 'tmhedberg/matchit'
 
@@ -224,40 +231,42 @@ vnoremap <C-c> "*y"
 " set up fzf
 set rtp+=/usr/local/opt/fzf
 
-" syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" " syntastic settings
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" 
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" 
+" let g:syntastic_error_symbol = '❌'
+" let g:syntastic_style_error_symbol = '⁉️'
+" let g:syntastic_warning_symbol = '⚠️'
+" let g:syntastic_style_warning_symbol = '💩'
+" 
+" let g:syntastic_loc_list_height = 5
+" let g:syntastic_javascript_checkers = ['eslint']
+" 
+" 
+" " Point syntastic checker at locally installed `eslint` if it exists.
+" if executable('node_modules/.bin/eslint')
+"     let g:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
+" endif
+" 
+" let g:syntastic_html_tidy_ignore_errors=[
+"             \ " proprietary attribute " ,
+"             \ "trimming empty \<", 
+"             \ "inserting implicit ", 
+"             \ "unescaped \&" , 
+"             \ "lacks \"action", 
+"             \ "lacks value", 
+"             \ "lacks \"src", 
+"             \ "is not recognized!", 
+"             \ "discarding unexpected", 
+"             \ "replacing obsolete "]
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
-
-let g:syntastic_loc_list_height = 5
-let g:syntastic_javascript_checkers = ['eslint']
-
-" Point syntastic checker at locally installed `eslint` if it exists.
-if executable('node_modules/.bin/eslint')
-    let g:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
-endif
-
-let g:syntastic_html_tidy_ignore_errors=[
-            \ " proprietary attribute " ,
-            \ "trimming empty \<", 
-            \ "inserting implicit ", 
-            \ "unescaped \&" , 
-            \ "lacks \"action", 
-            \ "lacks value", 
-            \ "lacks \"src", 
-            \ "is not recognized!", 
-            \ "discarding unexpected", 
-            \ "replacing obsolete "]
 
 map <C-z> <nop>
 
@@ -309,7 +318,7 @@ set diffopt+=vertical
 silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
 " YCM stuff
-let g:ycm_autoclose_preview_window_after_completion=1
+" let g:ycm_autoclose_preview_window_after_completion=1
 
 " UltiSnips stuff
 let g:UltiSnipsExpandTrigger="<c-e>"
@@ -325,10 +334,10 @@ let g:signify_vcs_list = [ 'git' ]
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Go to JS definition
-autocmd FileType javascript nnoremap <leader>d :TernDef<cr>zz
+autocmd FileType javascript nnoremap <leader>d :ALEGoToDefinition<cr>zz
 
 " Go to JS references
-autocmd FileType javascript nnoremap <leader>D :TernRef<cr>
+autocmd FileType javascript nnoremap <leader>D :ALEFindReferences<cr>
 
 " undotree
 nnoremap <C-g> :UndotreeToggle<CR>
@@ -351,12 +360,61 @@ let g:jsdoc_input_description = 1
 let g:jsdoc_additional_descriptions = 1
 let g:jsdoc_enable_es6 = 1
 
+" ale
+let g:airline#extensions#ale#enabled = 1
+let g:ale_echo_msg_format = '[%linter%] [%severity%] [%code%] %s'
+let g:ale_linter_aliases = {'vue': ['typescript', 'javascript']}
+let g:ale_linters = {
+            \ 'javascript': [
+                \'eslint', 
+                \'flow', 
+                \'flow-language-server', 
+                \'jscs', 
+                \'standard', 
+                \'tsserver', 
+                \'xo'
+            \],
+            \ 'typescript': ['tslint', 'tsserver'],
+            \ 'vue': ['tsserver', 'eslint']
+            \}
+
+let g:ale_fixers = {
+            \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \ 'javascript': ['eslint'],
+            \ 'vue': ['eslint']
+            \}
+
+" nnoremap <leader>A :let g:ale_linters = {
+"             \ 'javascript': [
+"                 \'eslint', 
+"                 \'flow', 
+"                 \'flow-language-server', 
+"                 \'jscs', 
+"                 \'standard', 
+"                 \'tsserver', 
+"                 \'xo'
+"             \],
+"             \ 'typescript': ['tslint', 'tsserver'],
+"             \ 'vue': ['eslint']
+"             \}<cr><cr>:edit<cr>
+
+" omnicomplete
+set completeopt=longest,menuone,preview
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+inoremap <expr> <Tab>      pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab>      pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 " OmniSharp configs
 " filetype plugin on
 " let g:OmniSharp_host = "http://localhost:2000"
 " let g:OmniSharp_timeout = 1
 " set noshowmatch
-" set completeopt=longest,menuone,preview
 " set splitbelow
 " let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 " 
