@@ -59,6 +59,16 @@ fun! HideGutter( arg ) "{{{
 endfunction "}}}
 command! -nargs=* HideGutter call HideGutter ( '<args> ' )
 
+command! -bang -nargs=* Fg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
 " ale - this is above plug loads so the completer works
 let g:ale_completion_enabled = 1
 
@@ -83,7 +93,8 @@ Plug 'Raimondi/delimitMate'
 Plug 'Olical/vim-enmasse'
 
 " The way to jump around your code base by rough file names.
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " We work with a lot of it, show it some love.
 Plug 'elzr/vim-json'
@@ -230,6 +241,7 @@ vnoremap <C-c> "*y"
 
 " set up fzf
 set rtp+=/usr/local/opt/fzf
+nnoremap <C-p> :Files<cr>
 
 " " syntastic settings
 " set statusline+=%#warningmsg#
