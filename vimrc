@@ -319,6 +319,9 @@ autocmd FileType html,xml setlocal foldmethod=indent
 let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.php"
 au FileType xml,html,vue,phtml,php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],{:}"
 
+" fix vue syntax highlighting
+au FileType vue syntax sync fromstart
+
 " for markdown previewer
 let vim_markdown_preview_github=1
 
@@ -375,7 +378,7 @@ let g:jsdoc_enable_es6 = 1
 " ale
 let g:airline#extensions#ale#enabled = 1
 let g:ale_echo_msg_format = '[%linter%] [%severity%] [%code%] %s'
-let g:ale_linter_aliases = {'vue': ['typescript', 'javascript']}
+let g:ale_linter_aliases = {'vue': ['typescript', 'javascript', 'html', 'css']}
 let g:ale_linters = {
             \ 'javascript': [
                 \'eslint', 
