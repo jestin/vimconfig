@@ -146,6 +146,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
 Plug 'SirVer/ultisnips'
 
 Plug 'honza/vim-snippets'
@@ -181,6 +182,8 @@ Plug 'kristijanhusak/vim-carbon-now-sh'
 
 " handle ansi colors
 Plug 'powerman/vim-plugin-AnsiEsc'
+
+Plug 'jceb/vim-orgmode'
 
 call plug#end()
 
